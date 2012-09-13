@@ -1,4 +1,7 @@
 Showr::Application.routes.draw do
+  match '/auth/:provider/callback' => 'sessions#create'
+  match "/logout" => "sessions#destroy", :as => :logout
+  match "/auth" => "sessions#info", :as => :auth
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +51,7 @@ Showr::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'sessions#info'
 
   # See how all your routes lay out with "rake routes"
 
