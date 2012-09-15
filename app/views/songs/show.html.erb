@@ -7,7 +7,7 @@
 
 <p>
   <b>User:</b>
-  <%= @song.user %>
+	<%= User.where(:uid => @song.parent_id).first.email %>
 </p>
 
 
