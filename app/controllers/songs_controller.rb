@@ -42,7 +42,7 @@ class SongsController < ApplicationController
   # POST /songs
   # POST /songs.json
   def create
-    @song = Song.new(params[:song])
+    @song = current_user.songs.new(params[:song])
 
     respond_to do |format|
       if @song.save

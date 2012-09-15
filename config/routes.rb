@@ -1,5 +1,9 @@
 Showr::Application.routes.draw do
-  resources :songs
+	resources :users do
+	  resources :songs
+	end
+	
+	resources :songs
 
   match '/auth/:provider/callback' => 'sessions#create'
   match "/logout" => "sessions#destroy", :as => :logout
