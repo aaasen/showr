@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-
+  has_many :songs
+  attr_accessible :url
   def self.create_with_omniauth(model)
     if model[:provider] == "dailycred"
       create_with_dailycred model
