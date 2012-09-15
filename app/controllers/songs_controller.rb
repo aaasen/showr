@@ -45,6 +45,8 @@ class SongsController < ApplicationController
     @song = current_user.songs.new(params[:song])
 		@song.user = current_user
 		@song.parent_id = current_user.uid
+		@song.up_vote = 1
+		@song.down_vote = 0
 
     respond_to do |format|
       if @song.save
@@ -84,4 +86,16 @@ class SongsController < ApplicationController
       format.json { head :no_content }
     end
   end
+	
+	def upvote
+		@song = Song.find(params[:id])
+		@song.update_attributes(:up_vote => @song.up_vote + 1)
+		redirect_to(songs_url)
+	end
+
+	def downvote
+		@song = Song.find(params[:id])
+		@song.update_attributes(:down_vote => @song.down_vote + 1)
+		redirect_to(songs_url)
+	end
 end

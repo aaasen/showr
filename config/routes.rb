@@ -1,6 +1,11 @@
 Showr::Application.routes.draw do
 	resources :users do
-	  resources :songs
+	  resources :songs do
+			member do
+				get 'upvote'
+				get 'downvote'
+			end
+		end
 	end
 	
 	resources :songs

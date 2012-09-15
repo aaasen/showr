@@ -4,6 +4,7 @@
   <tr>
     <th>Url</th>
     <th>User</th>
+    <th>Score</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,7 +14,7 @@
   <tr>
     <td><%= song.url %></td>
 		<td><%= User.where(:uid => song.parent_id).first.email %></td>
-    <td><%= song.parent_id %></td>
+    <td><%= song.up_vote - song.down_vote %></td>
     <td><%= link_to 'Show', song %></td>
     <td><%= link_to 'Edit', edit_song_path(song) %></td>
     <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -10,6 +10,17 @@
 	<%= User.where(:uid => @song.parent_id).first.email %>
 </p>
 
+<p>
+  <b>Score:</b>
+	<%= @song.up_vote - @song.down_vote %>
+	<p>
+		<%= @song.up_vote %>+ | <%= @song.down_vote %>-
+	</p>
+</p>
 
+
+
+<%= link_to '+1', upvote_user_song_path(@song) %>
+<%= link_to '-1', downvote_user_song_path(@song) %>
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>
