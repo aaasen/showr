@@ -6,6 +6,7 @@
 	<%= current_user.uid %>
 	<br />
 	<%= current_user.songs %>
+
 <% else %>
   <%= link_to 'Login In', login_path %> or <%= link_to 'Sign Up', signup_path %>
 <% end %>
