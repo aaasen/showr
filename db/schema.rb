@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120916005229) do
+ActiveRecord::Schema.define(:version => 20120916173350) do
 
   create_table "songs", :force => true do |t|
     t.string   "url"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(:version => 20120916005229) do
     t.integer  "down_vote"
     t.string   "name"
     t.text     "description"
+    t.string   "wav_url"
+    t.string   "username"
   end
 
   add_index "songs", ["user_id"], :name => "index_songs_on_user_id"

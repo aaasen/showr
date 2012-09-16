@@ -1,7 +1,18 @@
 <div class="span4">
 	<div class="song-box">
 		<div class="song-box-inner">
-			<%= link_to song.url, song %>
+			<h4><%= song.name %></h4>
+			<p><%= song.description %></p>
+			<audio controls="controls">
+				<source src="<%= song.wav_url %>" type="audio/wav" />
+			</audio>
+			<p><%= song.created_at %></p>
+			<div class="btn-group btn-group-vertical">
+				
+				<button class="btn"><i class="icon-circle-arrow-up"></i></button>
+				<button class="btn"><i class="icon-circle-arrow-down"></i></button>
+				<button class="btn"><%= song.up_vote - song.down_vote %></button>
+			</div>
 		</div>
 	</div>
 </div>

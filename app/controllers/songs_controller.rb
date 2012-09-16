@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-	before_filter :authenticate, :except => [:show, :index, :create]
+	before_filter :authenticate, :except => [:show, :index, :create, :new]
 
   # GET /songs
   # GET /songs.json
@@ -42,11 +42,18 @@ class SongsController < ApplicationController
   # POST /songs
   # POST /songs.json
   def create
-    @song = current_user.songs.new(params[:song])
-		@song.user = current_user
-		@song.parent_id = current_user.uid
-		@song.up_vote = 1
-		@song.down_vote = 0
+#   @song = current_user.songs.new(params[:song])
+#		@song.user = current_user
+#		@song.parent_id = current_user.uid
+#		@song.up_vote = 1
+#		@song.down_vote = 0
+
+    song = params[:song]
+    @song = User.first.songs.new(params[:song])
+    @song.user = User.first
+    @song.parent_id = User.first.uid
+    @song.up_vote = 1
+    @song.down_vote = 0
 
     respond_to do |format|
       if @song.save
