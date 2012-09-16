@@ -1,27 +1,110 @@
-<h1>Listing songs</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<table>
-  <tr>
-    <th>Url</th>
-    <th>User</th>
-    <th>Score</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <!-- Le styles -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
 
-<% @songs.each do |song| %>
-  <tr>
-    <td><%= song.url %></td>
-		<td><%= User.where(:uid => song.parent_id).first.email %></td>
-    <td><%= song.up_vote - song.down_vote %></td>
-    <td><%= link_to 'Show', song %></td>
-    <td><%= link_to 'Edit', edit_song_path(song) %></td>
-    <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-<br />
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
 
-<%= link_to 'New Song', new_song_path %>
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Showr</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Trending</a></li>
+              <li><a href="#new">New</a></li>
+              <li><a href="<%= new_song_path %>">Upload</a></li>
+            </ul>
+            <ul class="nav pull-right">
+              <%if current_user %>
+                <li class="dropdown">
+                <a href="#" id="category-btn" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %><b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to 'Logout', logout_path %>
+                    </li>
+                  <li>
+              </ul>
+              </li>
+                <% else %>
+                    <div class="btn-group">
+                      <a href="<%= login_path %>"><button class="btn">Login</button></a>
+                      <a href="<%= signup_path %>"><button class="btn">Signup</button></a>
+                    </div>
+                <% end %>
+
+              
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row show-grid shop-grid">
+        <div class="span4">
+          <div class="song-box">
+            <div class="sidebar-nav song-box-inner">
+              <p>
+                Showr.
+              </p>
+            </div>  
+          </div>
+        </div>
+
+        <%= render @songs %>
+    
+      </div>
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap-transition.js"></script>
+    <script src="../assets/js/bootstrap-alert.js"></script>
+    <script src="../assets/js/bootstrap-modal.js"></script>
+    <script src="../assets/js/bootstrap-dropdown.js"></script>
+    <script src="../assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../assets/js/bootstrap-tab.js"></script>
+    <script src="../assets/js/bootstrap-tooltip.js"></script>
+    <script src="../assets/js/bootstrap-popover.js"></script>
+    <script src="../assets/js/bootstrap-button.js"></script>
+    <script src="../assets/js/bootstrap-collapse.js"></script>
+    <script src="../assets/js/bootstrap-carousel.js"></script>
+    <script src="../assets/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>
+
