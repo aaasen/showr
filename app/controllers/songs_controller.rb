@@ -4,7 +4,13 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
   def index
-    @songs = Song.all
+    if params[:sort] == 'hot'
+      @songs = Song.order("up_vote").reverse
+    elsif params[:sort] == 'new'
+      @songs = Song.order("created_at").reverse
+    else
+      @songs = Song.order("up_vote").reverse
+    end
 
     respond_to do |format|
       format.html # index.html.erb
