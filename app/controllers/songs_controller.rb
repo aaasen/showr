@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-	before_filter :authenticate, :except => [:show, :index, :create, :new]
+	before_filter :authenticate, :except => [:show, :index, :create, :new, :upvote, :downvote]
 
   # GET /songs
   # GET /songs.json
