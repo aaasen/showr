@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta property="og:title" content="Project Name - How do you describe your project in one line?" /><meta property="og:type" content="company" /><meta property="og:site_name" content="Project Name" /><meta property="og:url" content="http://www.showrapp.co/signup" /><meta property="og:image" content="null" /><meta property="og:description" content="Imagine what someone else would want to post on your wall about signing up for your project." />
 		<title>Showr</title>
 	</head>
 
 	<body>
-		<div rel="YWNSHM35" class="lrdiscoverwidget" data-logo="on" data-background="on" data-share-url="www.showrapp.co/signup" data-css=""></div><script type="text/javascript" src="http://launchrock-ignition.s3.amazonaws.com/ignition.1.1.js"></script>
+		<div class="container">
+		<%if current_user %>
+		  <p>Hello <%= current_user.email %> <br>
+		    <%= link_to 'Logout', logout_path %>
+		  </p>
+			
+			<%= current_user.uid %>
+			<br />
+			<%= current_user.songs %>
+
+		<% else %>
+		  <%= link_to 'Login In', login_path %> or <%= link_to 'Sign Up', signup_path %>
+		<% end %>
+	</div>
 	</body>
 </html>

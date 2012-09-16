@@ -97,12 +97,12 @@ class SongsController < ApplicationController
 	def upvote
 		@song = Song.find(params[:id])
 		@song.update_attributes(:up_vote => @song.up_vote + 1)
-		redirect_to(songs_url)
+    redirect_to('songs#index')
 	end
 
 	def downvote
 		@song = Song.find(params[:id])
 		@song.update_attributes(:down_vote => @song.down_vote + 1)
-		redirect_to(songs_url)
+		redirect_to(root)
 	end
 end

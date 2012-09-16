@@ -7,8 +7,10 @@
 				<source src="<%= song.wav_url %>" type="audio/wav" />
 			</audio>
 			<p><%= song.created_at %></p>
+							<%= link_to '+1', upvote_song_path(song) %>
+				<%= link_to '-1', downvote_song_path(song) %>
 			<div class="btn-group btn-group-vertical">
-				
+
 				<button class="btn"><i class="icon-circle-arrow-up"></i></button>
 				<button class="btn"><i class="icon-circle-arrow-down"></i></button>
 				<button class="btn"><%= song.up_vote - song.down_vote %></button>

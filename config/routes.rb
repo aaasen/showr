@@ -10,10 +10,16 @@ Showr::Application.routes.draw do
 	
 	resources :songs
 
+  resources :songs do
+    member do
+      get 'upvote'
+      get 'downvote'      
+    end
+  end
+
   match '/auth/:provider/callback' => 'sessions#create'
   match "/logout" => "sessions#destroy", :as => :logout
   match "/auth" => "sessions#info", :as => :auth
-  match "/signup" => "sessions#info", :as => :auth
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
