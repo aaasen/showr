@@ -1,20 +1,26 @@
 <div class="span4">
 	<div class="song-box">
 		<div class="song-box-inner">
-			<h4><%= song.name %></h4>
-			<p><%= song.description %></p>
-			<audio controls="controls">
-				<source src="<%= song.wav_url %>" type="audio/wav" />
-			</audio>
-			<p>posted <%= distance_of_time_in_words(song.created_at, Time.now) %> ago</p>
-				<%= link_to '+1', upvote_song_path(song) %>
-				<%= link_to '-1', downvote_song_path(song) %>
-			<div class="btn-group btn-group-vertical">
+			<table>
+				<tr>
+					<td>
+						<div class="btn-group btn-group-vertical">
 
-				<a href="<%= upvote_song_path(song) %>"><button class="btn"><i class="icon-circle-arrow-up"></i></button></a>
-				<button class="btn"><i class="icon-circle-arrow-down"></i></button>
-				<button class="btn"><%= song.up_vote - song.down_vote %></button>
-			</div>
+							<a href="<%= upvote_song_path(song) %>"><button class="btn"><i class="icon-circle-arrow-up"></i></button></a>
+							<a href="<%= downvote_song_path(song) %>"><button class="btn"><i class="icon-circle-arrow-down"></i></button></a>
+							<button class="btn"><%= song.up_vote - song.down_vote %></button>
+						</div>
+					</td>
+					<td>
+						<h4><%= song.name %></h4>
+						<p><%= song.description %></p>
+						<audio controls="controls">
+							<source src="<%= song.wav_url %>" type="audio/wav" />
+						</audio>
+						<p>posted <%= distance_of_time_in_words(song.created_at, Time.now) %> ago</p>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 </div>
