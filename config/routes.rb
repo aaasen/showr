@@ -16,7 +16,7 @@ Showr::Application.routes.draw do
       get 'downvote'      
     end
   end
-
+  match "/aboutus" => 'songs#aboutus'
   match '/auth/:provider/callback' => 'sessions#create'
   match "/logout" => "sessions#destroy", :as => :logout
   match "/auth" => "sessions#info", :as => :auth

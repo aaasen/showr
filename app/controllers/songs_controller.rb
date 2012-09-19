@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-	before_filter :authenticate, :except => [:show, :index, :create, :new, :upvote, :downvote]
+	before_filter :authenticate, :except => [:show, :index, :create, :new, :upvote, :downvote, :aboutus]
 
   # GET /songs
   # GET /songs.json
@@ -111,4 +111,12 @@ class SongsController < ApplicationController
 		@song.update_attributes(:down_vote => @song.down_vote + 1)
 		redirect_to(songs_path)
 	end
+	
+  def aboutus
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @song }
+    end
+  end
 end
