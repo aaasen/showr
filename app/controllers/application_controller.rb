@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
+  
   helper_method :current_user, :login_path, :dailycred, :signup_path
 
+  
   private
 
   def current_user
